@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const authAxios = axios.create({
   baseURL: 'https://connections-api.goit.global',
-  // headers: { Authorization: AUTH_TOKEN },
 });
 
 export const authSignup = createAsyncThunk('auth/signup', async (userData, thunkAPI) => {
@@ -30,6 +29,16 @@ export const authLogout = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
   try {
     await authAxios.post('/users/logout');
     authAxios.defaults.headers.common['Authorization'] = '';
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const authRefresh = createAsyncThunk('auth/refresh', async (token, thunkAPI) => {
+  authAxios.defaults.headers.common['Authorization'] = token;
+  try {
+    const response = await authAxios.get('/users/current');
+    return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

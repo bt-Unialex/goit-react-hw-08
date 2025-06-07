@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { authLogin, authLogout, authSignup } from './operations';
+import { authLogin, authLogout, authRefresh, authSignup } from './operations';
 
 const handlePending = (state) => {
   state.isRefreshing = true;
@@ -69,6 +69,13 @@ const slice = createSlice({
           name: null,
           email: null,
         };
+      })
+      .addCase(authRefresh.pending, handlePending)
+      .addCase(authRefresh.rejected, handleRejected)
+      .addCase(authRefresh.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.isLoggedIn = true;
+        state.user = action.payload;
       });
   },
 });

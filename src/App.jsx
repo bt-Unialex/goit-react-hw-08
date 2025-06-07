@@ -3,7 +3,7 @@ import { Flip, ToastContainer } from 'react-toastify';
 
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchContacts } from './redux/contacts/operations';
 
@@ -13,12 +13,21 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 import Layout from './components/Layout/Layout';
+import { authRefresh } from './redux/auth/operations';
+import { selectAuthToken, selectIsLoggedIn } from './redux/auth/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
+  const isLogedIn = useSelector(selectIsLoggedIn);
+  const token = useSelector(selectAuthToken);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (token && !isLogedIn) dispatch(authRefresh(token));
+  }, [dispatch, token, isLogedIn]);
 
   return (
     <>
