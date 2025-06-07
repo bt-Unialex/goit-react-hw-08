@@ -1,12 +1,16 @@
-import css from './App.module.css';
+// import css from './App.module.css';
 import { Flip, ToastContainer } from 'react-toastify';
-import ContactForm from './components/ContactForm/ContactForm';
-import SearchBox from './components/SearchBox/SearchBox';
-import ContactList from './components/ContactList/ContactList';
 
 import { useEffect } from 'react';
 import { fetchContacts } from './redux/contactsOps';
 import { useDispatch } from 'react-redux';
+
+import Layout from './components/Layout/Layout';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import { Route, Routes } from 'react-router';
+import HomePage from './pages/HomePage/HomePage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,12 +19,17 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div className={css.wrapper}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-      <ToastContainer newestOnTop={true} closeOnClick={true} theme="colored" transition={Flip} />
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Routes>
+        <ContactsPage />
+        <ToastContainer newestOnTop={true} closeOnClick={true} theme="colored" transition={Flip} />
+      </Layout>
+    </>
   );
 }
