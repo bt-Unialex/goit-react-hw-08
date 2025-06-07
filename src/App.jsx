@@ -2,15 +2,17 @@
 import { Flip, ToastContainer } from 'react-toastify';
 
 import { useEffect } from 'react';
-import { fetchContacts } from './redux/contactsOps';
+import { Route, Routes } from 'react-router';
 import { useDispatch } from 'react-redux';
 
-import Layout from './components/Layout/Layout';
-import ContactsPage from './pages/ContactsPage/ContactsPage';
-import { Route, Routes } from 'react-router';
+import { fetchContacts } from './redux/contacts/operations';
+
 import HomePage from './pages/HomePage/HomePage';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+
+import Layout from './components/Layout/Layout';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -27,7 +29,6 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
-        <ContactsPage />
         <ToastContainer newestOnTop={true} closeOnClick={true} theme="colored" transition={Flip} />
       </Layout>
     </>

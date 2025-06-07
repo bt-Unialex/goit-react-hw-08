@@ -1,7 +1,6 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
 import { toast } from 'react-toastify';
-import { selectFilter } from './filterSlice';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialContact = {
   items: [],
@@ -46,13 +45,5 @@ const slice = createSlice({
         state.items = state.items.filter((contact) => contact.id !== action.payload.id);
       }),
 });
-
-export const selectContacts = (state) => state.contacts.items;
-export const selectLoadingContacts = (state) => state.contacts.loading;
-export const selectContactsError = (state) => state.contacts.error;
-
-export const selectFilteredContacts = createSelector([selectContacts, selectFilter], (contacts, filter) =>
-  contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase())),
-);
 
 export default slice.reducer;

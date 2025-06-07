@@ -1,5 +1,11 @@
+import { NavLink } from 'react-router';
 import css from './AuthNav.module.css';
 
-export default function AuthNav({ props }) {
-  return <div className={css.wrapper}>AuthNav</div>;
+export default function AuthNav() {
+  return (
+    <div className={css.wrapper}>
+      <NavLink to="/register">Register</NavLink>
+      <NavLink to="/login">Login</NavLink>
+    </div>
+  );
 }

@@ -4,12 +4,11 @@ import UserMenu from '../UserMenu/UserMenu';
 import css from './AppBar.module.css';
 
 export default function AppBar() {
+  const isLogedIn = true;
   return (
-    <div className={css.wrapper}>
-      AppBar
+    <nav className={css.wrapper}>
       <Navigation />
-      <AuthNav />
-      <UserMenu />
-    </div>
+      {isLogedIn ? <UserMenu /> : <AuthNav />}
+    </nav>
   );
 }
