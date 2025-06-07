@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import css from './HomePage.module.css';
 
 export default function HomePage() {
-  const isLogedIn = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
@@ -11,7 +13,7 @@ export default function HomePage() {
             💁‍♀️
           </span>
         </h2>
-        {!isLogedIn && <p className={css.title}>Please, register or log in!</p>}
+        {!isLoggedIn && <p className={css.title}>Please, register or log in!</p>}
       </div>
     </div>
   );

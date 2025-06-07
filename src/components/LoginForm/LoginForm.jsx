@@ -2,21 +2,23 @@ import css from './LoginForm.module.css';
 import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { authLogin } from '../../redux/auth/operations';
 
 export default function LoginForm() {
   const ids = useId();
+  const dispatch = useDispatch();
 
   function handleSubmit(values, actions) {
-    console.log(values);
-    console.log(actions);
-
-    //  dispatch(addContact(values));
+    dispatch(authLogin(values));
     actions.resetForm();
   }
 
   const initialValues = {
-    email: '',
-    password: '',
+    email: 'acrossorca@mail.com',
+    password: 'examplepwd12345',
+    // email: '',
+    // password: '',
   };
 
   const FormSchema = Yup.object().shape({
