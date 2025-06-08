@@ -13,7 +13,7 @@ import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 import Layout from './components/Layout/Layout';
-import { authRefresh } from './redux/auth/operations';
+import { refreshUser } from './redux/auth/operations';
 import { selectAuthToken, selectIsLoggedIn } from './redux/auth/selectors';
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (token && !isLogedIn) dispatch(authRefresh(token));
+    if (token && !isLogedIn) dispatch(refreshUser(token));
   }, [dispatch, token, isLogedIn]);
 
   return (

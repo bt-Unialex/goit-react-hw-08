@@ -3,14 +3,14 @@ import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { authLogin } from '../../redux/auth/operations';
+import { login } from '../../redux/auth/operations';
 
 export default function LoginForm() {
   const ids = useId();
   const dispatch = useDispatch();
 
   function handleSubmit(values, actions) {
-    dispatch(authLogin(values));
+    dispatch(login(values));
     actions.resetForm();
   }
 

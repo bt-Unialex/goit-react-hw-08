@@ -5,7 +5,7 @@ const authAxios = axios.create({
   baseURL: 'https://connections-api.goit.global',
 });
 
-export const authSignup = createAsyncThunk('auth/signup', async (userData, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
   try {
     const response = await authAxios.post('/users/signup', userData);
     authAxios.defaults.headers.common['Authorization'] = response.data.token;
@@ -15,7 +15,7 @@ export const authSignup = createAsyncThunk('auth/signup', async (userData, thunk
   }
 });
 
-export const authLogin = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
   try {
     const response = await authAxios.post('/users/login', userData);
     authAxios.defaults.headers.common['Authorization'] = response.data.token;
@@ -25,7 +25,7 @@ export const authLogin = createAsyncThunk('auth/login', async (userData, thunkAP
   }
 });
 
-export const authLogout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await authAxios.post('/users/logout');
     authAxios.defaults.headers.common['Authorization'] = '';
@@ -34,7 +34,7 @@ export const authLogout = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
   }
 });
 
-export const authRefresh = createAsyncThunk('auth/refresh', async (token, thunkAPI) => {
+export const refreshUser = createAsyncThunk('auth/refresh', async (token, thunkAPI) => {
   authAxios.defaults.headers.common['Authorization'] = token;
   try {
     const response = await authAxios.get('/users/current');

@@ -4,24 +4,21 @@ import css from './RegistrationForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { authSignup } from '../../redux/auth/operations';
+import { register } from '../../redux/auth/operations';
 
 export default function RegistrationForm() {
   const ids = useId();
   const dispatch = useDispatch();
 
   function handleSubmit(values, actions) {
-    dispatch(authSignup(values));
+    dispatch(register(values));
     actions.resetForm();
   }
 
   const initialValues = {
-    name: 'Adrian Cross',
-    email: 'acrossorca@mail.com',
-    password: 'examplepwd12345',
-    // name: '',
-    // email: '',
-    // password: '',
+    name: '',
+    email: '',
+    password: '',
   };
 
   const FormSchema = Yup.object().shape({
