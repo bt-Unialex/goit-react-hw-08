@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
+import { logout } from '../auth/operations';
 
 const initialContact = {
   items: [],
@@ -43,6 +44,10 @@ const slice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = state.items.filter((contact) => contact.id !== action.payload.id);
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
       }),
 });
 
