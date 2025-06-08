@@ -2,30 +2,82 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     border: 1px solid #272727;
     border-radius: 8px;
-    padding: 12px;
+    padding: 8px;
+    scroll-snap-align: start;
 }
 
-.text:first-child {
-    margin-bottom: 4px;
+.fildsblock {
+    width: 100%;
+    min-height: 66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
 }
 
-.text {
-    margin-bottom: 4px;
-}
 
-.icon {
+.fildsblock .icon {
     margin-right: 8px;
 }
 
-.deleteButton {
-    padding: 6px 12px;
+.field {
+    display: flex;
+    /* height: 31px; */
+    align-items: center;
+    line-height: 1;
+    width: 100%;
+    /* padding: 0 4px; */
+
+}
+
+input.field {
+    padding: 0;
+    border-radius: 2px;
+    outline: 1px solid #272727;
+    outline-offset: 2px;
+    border: 0;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.field:focus {
+    outline: 1px solid blue;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+}
+
+.buttonsblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.button {
+    display: block;
+    line-height: 1;
+    padding: 4px;
     border: 1px solid #aaa;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-.deleteButton:hover {
+.button:hover {
     background: #ddd;
+}
+
+.error {
+    display: block;
+    padding-left: 8px;
+    color: red;
 }

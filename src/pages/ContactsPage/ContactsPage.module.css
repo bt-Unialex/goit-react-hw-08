@@ -1,11 +1,9 @@
 .wrapper {
-    /* border: 3px solid green; */
-    /* border-radius: 20px; */
     width: 360px;
-    height: 100%;
-    padding: 12px;
+    /* height: 100%; */
 
     display: flex;
     flex-direction: column;
     gap: 12px;
+    overflow-y: hidden;
 }

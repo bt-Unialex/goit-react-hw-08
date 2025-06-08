@@ -27,8 +27,17 @@ ul {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
   min-width: 320px;
-  min-height: 100vh;
-  max-height: 100vh;
+  max-width: 98vw;
+  min-height: 98vh;
+  max-height: 98vh;
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
 }

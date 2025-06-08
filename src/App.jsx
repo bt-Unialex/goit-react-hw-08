@@ -29,16 +29,18 @@ export default function App() {
   return isRefreshing ? (
     <strong>Loading...</strong>
   ) : (
-    <Layout>
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RestrictedRoute page={<RegistrationPage />} />} />
-          <Route path="/login" element={<RestrictedRoute page={<LoginPage />} />} />
-          <Route path="/contacts" element={<PrivateRoute page={<ContactsPage />} />} />
-        </Routes>
-      </Suspense>
+    <>
+      <Layout>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RestrictedRoute page={<RegistrationPage />} />} />
+            <Route path="/login" element={<RestrictedRoute page={<LoginPage />} />} />
+            <Route path="/contacts" element={<PrivateRoute page={<ContactsPage />} />} />
+          </Routes>
+        </Suspense>
+      </Layout>
       <ToastContainer newestOnTop={true} closeOnClick={true} theme="colored" transition={Flip} />
-    </Layout>
+    </>
   );
 }
