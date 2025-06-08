@@ -37,6 +37,7 @@ export default function App() {
             <Route path="/register" element={<RestrictedRoute page={<RegistrationPage />} />} />
             <Route path="/login" element={<RestrictedRoute page={<LoginPage />} />} />
             <Route path="/contacts" element={<PrivateRoute page={<ContactsPage />} />} />
+            <Route path="*" element={<HomePage />} />
           </Routes>
         </Suspense>
       </Layout>
