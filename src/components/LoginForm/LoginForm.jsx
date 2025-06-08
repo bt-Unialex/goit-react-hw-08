@@ -15,10 +15,10 @@ export default function LoginForm() {
   }
 
   const initialValues = {
-    email: 'acrossorca@mail.com',
-    password: 'examplepwd12345',
-    // email: '',
-    // password: '',
+    // email: 'acrossorca@mail.com',
+    // password: 'examplepwd12345',
+    email: '',
+    password: '',
   };
 
   const FormSchema = Yup.object().shape({

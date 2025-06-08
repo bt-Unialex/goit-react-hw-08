@@ -5,6 +5,7 @@
 
     border: 3px solid green;
     border-radius: 20px;
+    width: min(380px, 98vw);
     height: 98vh;
     padding: 12px;
 }
