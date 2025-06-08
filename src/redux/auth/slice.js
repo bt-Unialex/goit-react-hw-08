@@ -18,15 +18,6 @@ const handleRejected = (state, action) => {
 //   "token": eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODQ0ODBlMmM0OTVlZDZlMjVmNDMzYjAiLCJpYXQiOjE3NDkzMTk5MDZ9.jifF8Bc86F1g_fiE_gMyicATsnC6xTDSeEFA9NcmPrI,
 // }
 
-// const initialAuth = {
-//   user: {
-//     name: 'Adrian Cross',
-//     email: 'across@mail.com',
-//   },
-//   token: null,
-//   isLoggedIn: true,
-//   isRefreshing: false,
-// };
 const initialAuth = {
   user: {
     name: null,

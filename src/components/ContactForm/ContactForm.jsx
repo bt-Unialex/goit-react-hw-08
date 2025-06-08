@@ -16,7 +16,6 @@ export default function ContactForm() {
   }
 
   const initialValues = {
-    id: '',
     name: '',
     number: '',
   };
